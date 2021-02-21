@@ -57,7 +57,7 @@ Drivers/STM32F1xx_HAL_Driver/Src/%.o: ../Drivers/STM32F1xx_HAL_Driver/Src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU GCC Compiler'
 	@echo $(PWD)
-	arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DUSE_HAL_DRIVER -DSTM32F103xB -I"D:/UFMG/12o/Embarcados/tp1/hc05/Example_ATComm/Core/Inc" -I"D:/UFMG/12o/Embarcados/tp1/hc05/Example_ATComm/Drivers/STM32F1xx_HAL_Driver/Inc" -I"D:/UFMG/12o/Embarcados/tp1/hc05/Example_ATComm/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"D:/UFMG/12o/Embarcados/tp1/hc05/Example_ATComm/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"D:/UFMG/12o/Embarcados/tp1/hc05/Example_ATComm/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DUSE_HAL_DRIVER -DSTM32F103xB -I"D:/UFMG/12o/Embarcados/tp1/hc05/hc05_api/Example_ATComm/Core/Inc" -I"D:/UFMG/12o/Embarcados/tp1/hc05/hc05_api/Example_ATComm/Drivers/STM32F1xx_HAL_Driver/Inc" -I"D:/UFMG/12o/Embarcados/tp1/hc05/hc05_api/Example_ATComm/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy" -I"D:/UFMG/12o/Embarcados/tp1/hc05/hc05_api/Example_ATComm/Drivers/CMSIS/Device/ST/STM32F1xx/Include" -I"D:/UFMG/12o/Embarcados/tp1/hc05/hc05_api/Example_ATComm/Drivers/CMSIS/Include"  -Og -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

@@ -1,3 +1,12 @@
+/*
+ * 	API for HC-05 Module (hc05.c/hc05.h).
+ * 	Authors: Camilla Gomes Fernandes
+			 Lucas Guimarães Hofner
+ *  This API was developed as an assignment for Embedded Systems
+ *  Programming class at the Federal University of Minas Gerais
+*/
+
+
 #ifndef __HC05
 #define __HC05
 
@@ -5,10 +14,17 @@
 extern "C" {
 #endif
 
-#include "stm32f1xx_hal.h"
+// ---------------------------------------------- INCLUDES --------------------------------------------------- //
 
+#include "stm32f1xx_hal.h"
+#include "string.h"
+
+
+// ---------------------------------------------- DEFINES ---------------------------------------------------- //
+// API Responses
 #define OK "OK\r\n"
 #define FAIL "FAIL\r\n"
+// AT Commands
 #define AT "AT\r\n"
 #define AT_RESET "AT+RESET\r\n"
 #define AT_VERSION "AT+VERSION?\r\n"
@@ -56,41 +72,43 @@ extern "C" {
 #define AT_DISC "AT+DISC=" 
 #define AT_ENSNIFF "AT+ENSNIFF=" 
 #define AT_EXSNIFF "AT+EXSNIFF=" 
-#define AT_RESET_CMD "+RESET"
-#define AT_VERSION_CMD "+VERSION"
-#define AT_ORGL_CMD "+ORGL"
-#define AT_ADDR_CMD "+ADDR"
-#define AT_NAME_CMD "+NAME"
-#define AT_RNAME_CMD "+RNAME"
-#define AT_ROLE_CMD "+ROLE"
-#define AT_CLASS_CMD "+CLASS"
-#define AT_IAC_CMD "+IAC"
-#define AT_INQM_CMD "+INQM"
-#define AT_PSWD_CMD "+PSWD"
-#define AT_UART_CMD "+UART"
-#define AT_CMODE_CMD "+CMODE"
-#define AT_BIND_CMD "+BIND"
-#define AT_POLAR_CMD "+POLAR"
-#define AT_PIO_CMD "+PIO"
-#define AT_IPSCAN_CMD "+IPSCAN"
-#define AT_SNIFF_CMD "+SNIFF"
-#define AT_SENM_CMD "+SENM"
-#define AT_PMSAD_CMD "+PMSAD"
-#define AT_RMAAD_CMD "+RMAAD"
-#define AT_FSAD_CMD "+FSAD"
-#define AT_ADCN_CMD "+ADCN"
-#define AT_MRAD_CMD "+MRAD"
-#define AT_STATE_CMD "+STATE"
-#define AT_INIT_CMD "+INIT"
-#define AT_INQ_CMD "+INQ"
-#define AT_INQC_CMD "+INQC"
-#define AT_PAIR_CMD "+PAIR"
-#define AT_LINK_CMD "+LINK"
-#define AT_DISC_CMD "+DISC"
-#define AT_ENSNIFF_CMD "+ENSNIFF"
-#define AT_EXSNIFF_CMD "+EXSNIFF"
+// AT Commands Suffix
+#define AT_RESET_SUFFIX "+RESET"
+#define AT_VERSION_SUFFIX "+VERSION"
+#define AT_ORGL_SUFFIX "+ORGL"
+#define AT_ADDR_SUFFIX "+ADDR"
+#define AT_NAME_SUFFIX "+NAME"
+#define AT_RNAME_SUFFIX "+RNAME"
+#define AT_ROLE_SUFFIX "+ROLE"
+#define AT_CLASS_SUFFIX "+CLASS"
+#define AT_IAC_SUFFIX "+IAC"
+#define AT_INQM_SUFFIX "+INQM"
+#define AT_PSWD_SUFFIX "+PSWD"
+#define AT_UART_SUFFIX "+UART"
+#define AT_CMODE_SUFFIX "+CMODE"
+#define AT_BIND_SUFFIX "+BIND"
+#define AT_POLAR_SUFFIX "+POLAR"
+#define AT_PIO_SUFFIX "+PIO"
+#define AT_IPSCAN_SUFFIX "+IPSCAN"
+#define AT_SNIFF_SUFFIX "+SNIFF"
+#define AT_SENM_SUFFIX "+SENM"
+#define AT_PMSAD_SUFFIX "+PMSAD"
+#define AT_RMAAD_SUFFIX "+RMAAD"
+#define AT_FSAD_SUFFIX "+FSAD"
+#define AT_ADCN_SUFFIX "+ADCN"
+#define AT_MRAD_SUFFIX "+MRAD"
+#define AT_STATE_SUFFIX "+STATE"
+#define AT_INIT_SUFFIX "+INIT"
+#define AT_INQ_SUFFIX "+INQ"
+#define AT_INQC_SUFFIX "+INQC"
+#define AT_PAIR_SUFFIX "+PAIR"
+#define AT_LINK_SUFFIX "+LINK"
+#define AT_DISC_SUFFIX "+DISC"
+#define AT_ENSNIFF_SUFFIX "+ENSNIFF"
+#define AT_EXSNIFF_SUFFIX "+EXSNIFF"
 
-UART_HandleTypeDef huart;
+
+// ---------------------------------------------- STRUCTURES ---------------------------------------------------- //
 
 typedef enum {
 	RESPONSE_OK = 0x1,
@@ -125,19 +143,19 @@ typedef struct {
 	char* param4;
 }HC05_RESPONSE_FOURPARAM;
 
+// ---------------------------------------------- PRIVATE FUNCTIONS ---------------------------------------------------- //
+static const char *createCmdWithParams(char* cmd,int numparams, char* params[]);
+static const char *getStringResponse();
+static HC05_RESPONSE getNoParamResponse();
+static HC05_RESPONSE_ONEPARAM getOneParamResponse(char* cmd);
+static HC05_RESPONSE_TWOPARAM getTwoParamResponse(char* cmd);
+static HC05_RESPONSE_THREEPARAM getThreeParamResponse(char* cmd);
+static HC05_RESPONSE_FOURPARAM getFourParamResponse(char* cmd);
+
+// ---------------------------------------------- PUBLIC FUNCTIONS ---------------------------------------------------- //
 void initializeHC05Module(UART_HandleTypeDef* _huart);
 void sendData(char* data);
 const char* receiveData(int size);
-
-const char *createCmdWithParams(char* cmd,int numparams, char* params[]);
-
-const char *getStringResponse();
-HC05_RESPONSE getNoParamResponse();
-HC05_RESPONSE_ONEPARAM getOneParamResponse(char* cmd);
-HC05_RESPONSE_TWOPARAM getTwoParamResponse(char* cmd);
-HC05_RESPONSE_THREEPARAM getThreeParamResponse(char* cmd);
-HC05_RESPONSE_FOURPARAM getFourParamResponse(char* cmd);
-
 HC05_RESPONSE testModule();
 HC05_RESPONSE resetModule();
 HC05_RESPONSE_ONEPARAM getModuleVersion();
@@ -145,7 +163,7 @@ HC05_RESPONSE restoreModule();
 HC05_RESPONSE_ONEPARAM getModuleAddress();
 HC05_RESPONSE setModuleName(char* name);
 HC05_RESPONSE_ONEPARAM getModuleName();
-HC05_RESPONSE_ONEPARAM getDeviceName(char* name);
+HC05_RESPONSE_ONEPARAM getDeviceName(char* addr);
 HC05_RESPONSE setModuleRole(char* role);
 HC05_RESPONSE_ONEPARAM getModuleRole();
 HC05_RESPONSE setDeviceClass(char* class);
