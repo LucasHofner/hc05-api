@@ -230,6 +230,9 @@ static HC05_RESPONSE_FOURPARAM getFourParamResponse(char* cmd){
 	}
 }
 
+// ------------------------------------------- PUBLIC FUNCTIONS ---------------------------------------------------- //
+
+
 /*
 	Description: Initialize the UART handler for the Bluetooth Module, allowing the communication.
 	@param[_huart]: Pointer to the UART handler.
