@@ -16,45 +16,45 @@ About the organization of the API, in the main folder, in addition to the ReadMe
 
 Before transfer data is necessary to pair the Bluetooth module with the cell phone. That can be done inside de configuration of the phone itself as shown in the link below.
 
-[Watch video](https://github.com/LucasHofner/hc05-api/Others/video_PairPhone.mp4)
+[Watch video](https://github.com/LucasHofner/hc05-api/blob/master/Others/video_PairPhone.mp4)
 
 The module can be presented in three states, to find out what status it is currently in, it is necessary to check the led within the device.
 
 1.	Searching for other devices: When this state is on, is possible to see the led blinking very fast and unstoppable. 
 
-![gif_Modo1](https://github.com/LucasHofner/hc05-api/Others/gif_Modo1.gif)
+![gif_Modo1](https://github.com/LucasHofner/hc05-api/blob/master/Others/gif_Modo1.gif)
 
 2.	Paired: In this situation the led seams to flash twice and after three seconds it flashes twice again.
 
-![gif_Modo2](https://github.com/LucasHofner/hc05-api/Others/gif_Modo2.gif)
+![gif_Modo2](https://github.com/LucasHofner/hc05-api/blob/master/Others/gif_Modo2.gif)
 
 3.	Connected and ready to exchange data: The led flashes very slowly. Staying a few seconds on and a few seconds off which time. 
 
-![gif_Modo3](https://github.com/LucasHofner/hc05-api/Others/gif_Modo3.gif)
+![gif_Modo3](https://github.com/LucasHofner/hc05-api/blob/master/Others/gif_Modo3.gif)
 
 ## Application to test the API
 
 As previously mentioned an APP for android cell phone was created to check the data exchange via Bluetooth. Both ways: from cell to board and from STM32f103R to phone. It was developed using the MIT APP Inventor platform <http://appinventor.mit.edu/>.
 
-[Download App](https://github.com/LucasHofner/hc05-api/Others/AppModuloBluetooth.apk)
+[Download App](https://github.com/LucasHofner/hc05-api/blob/master/Others/AppModuloBluetooth.apk)
 
 Basically what the application does is to allow the connection of a cell phone with the Bluetooth module in order to transmit data between the phone and the Nucleo Board. To install the APP follow the instructions of the video below.
 
-[Watch video](https://github.com/LucasHofner/hc05-api/Others/video_DownloadAPP.mp4)
+[Watch video](https://github.com/LucasHofner/hc05-api/blob/master/Others/video_DownloadAPP.mp4)
 
 It contains two buttons, that control a led on the board, and a space to be filled with the button information on the board. The led shows the cell phone sending information to the board and the button does the opposite.
 
-![image_AppScreen](https://github.com/LucasHofner/hc05-api/Others/image_AppScreen.png)
+![image_AppScreen](https://github.com/LucasHofner/hc05-api/blob/master/Others/image_AppScreen.png)
 
 After pairing the devices and installing the APP on the phone, it will be necessary to connect the phone to the board. What can be done using the first button on the screen “Conexão Bluetooth”. Once this is done it will be possible to exchange data.
 
 When clicking on the button “Ligar”, the character “L” will be sent from the cell phone to the board. Pressing the button “Desligar” the character “D” will be transmitted. Running the API when the board receive the characters “L” and “D” it will change the status of the led turning it on and off, respectively.
 
-![gif_LED](https://github.com/LucasHofner/hc05-api/Others/gif_LED.gif)
+![gif_LED](https://github.com/LucasHofner/hc05-api/blob/master/Others/gif_LED.gif)
 
 By pressing the button on STM32f103R, the character “1” will be sent to the cell phone. Once this character is received the APP will interpret this information and show a message in red at the bottom of the screen for one second.
 
-![gif_Button](https://github.com/LucasHofner/hc05-api/Others/gif_Button.gif)
+![gif_Button](https://github.com/LucasHofner/hc05-api/blob/master/Others/gif_Button.gif)
 
 The button “Sair” closes the APP.
 
