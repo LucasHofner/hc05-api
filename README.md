@@ -62,7 +62,7 @@ The hardware Setup is shown in Figure 8. The following points should be consider
 
 The last item is explained by the AT Command Mode. This is a different operation mode than the regular one (that connects to a device and perform data transfer). In this mode all the AT commands are performed. These commands are used to configure different parameters of the module, from his name and PIN code to UART configuration and connection parameters. When KEY is connected to +VCC **before** the module energizes, the module initializes in AT Command Mode. Otherwise, the initialization occurs in the regular mode.
 
-![Hardware_setup](https://github.com/LucasHofner/hc05-api/blob/master/Others/setup_hc05.PNG)
+![Hardware_setup](https://github.com/LucasHofner/hc05-api/blob/master/Others/setup_hc05.jpg)
 
 _Figure 8 Hardware Setup_
 
