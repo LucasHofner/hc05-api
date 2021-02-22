@@ -20,15 +20,15 @@ Before transfer data is necessary to pair the Bluetooth module with the cell pho
 
 The module can be presented in three states, to find out what status it is currently in, it is necessary to check the led within the device.
 
-1.	Searching for other devices: When this state is on, is possible to see the led blinking very fast and unstoppable. 
+   1.	**Searching for other devices:** When this state is on, is possible to see the led blinking very fast and unstoppable. 
 
 ![gif_Modo1](https://github.com/LucasHofner/hc05-api/blob/master/Others/gif_Modo1.gif)
 
-2.	Paired: In this situation the led seams to flash twice and after three seconds it flashes twice again.
+   2.	**Paired:** In this situation the led seams to flash twice and after three seconds it flashes twice again.
 
 ![gif_Modo2](https://github.com/LucasHofner/hc05-api/blob/master/Others/gif_Modo2.gif)
 
-3.	Connected and ready to exchange data: The led flashes very slowly. Staying a few seconds on and a few seconds off which time. 
+   3.	**Connected and ready to exchange data:** The led flashes very slowly. Staying a few seconds on and a few seconds off which time. 
 
 ![gif_Modo3](https://github.com/LucasHofner/hc05-api/blob/master/Others/gif_Modo3.gif)
 
