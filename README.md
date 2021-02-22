@@ -13,7 +13,8 @@ _Figure 1: Bluetooth module RS323 HC05._
 About the organization of the API, in the main folder, in addition to the ReadMe file it is possible to find four folders. The first one, *Library*, contains the files **hc05.c** and **hc05.h** which are the API itself. The folder *Example_Application*, contains an example of how to use the API and the Android application created for testing the API. The *Example_ATComm* allows manage the Bluetooth module using AT commands, changing the module's name and baud rate. The last folder *Others* contains files like the application for android devices created to test the data exchange and a tutorial to install it, along with another tutorial of how to pair the cell phone with the Bluetooth module before data transfer.
 
 ## Setting up CubeMX Project
-The first step presented here is optional but recommended as it facilitates the creation of a new STM32F1 project. It consists in creating a project in CubeMX software. This software allows the user, in a easy way, configure the microcontroller and peripherals and also generating code. It can be downloaded from the ST website: [CubeMX Download] (https://www.st.com/en/development-tools/stm32cubemx.html).
+The first step presented here is optional but recommended as it facilitates the creation of a new STM32F1 project. It consists in creating a project in CubeMX software. This software allows the user, in a easy way, configure the microcontroller and peripherals and also generating code. It can be downloaded from the ST website:
+https://www.st.com/en/development-tools/stm32cubemx.html.
 
 Once the software is installed, the option in the main menu "Access to Board Selector" has to be selected, as shown in the image below.
 ![Cube_AccessBoardSelector](https://github.com/LucasHofner/hc05-api/blob/master/Others/cube_initialscreen.PNG)
